@@ -1,6 +1,7 @@
 import csv, sqlite3
 
-# a simple csv to sqlite db file script for CofT bt data
+# a simple csv to sqlite db file script for CofT bluetooth data
+# bluetooth data: http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=0b3abcfaf9c6a510VgnVCM10000071d60f89RCRD&vgnextchannel=1a66e03bb8d1e310VgnVCM10000071d60f89RCRD
 
 localPath ="enter path of your csv files here"
 
