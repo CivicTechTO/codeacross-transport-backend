@@ -9,5 +9,8 @@ and not yet connected.
 ## Usage
 
 ```
-# TODO
+# TODO,
+- found an example: https://github.com/narenaryan/Salary-API
+  with tutorials: https://impythonist.wordpress.com/2015/07/12/build-an-api-under-30-lines-of-code-with-python-and-flask/
+
 ```
