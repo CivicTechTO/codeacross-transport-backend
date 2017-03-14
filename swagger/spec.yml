@@ -18,9 +18,9 @@ basePath: /v0
 produces:
   - application/json
 paths:
-  /historic:
+  /historical:
     get:
-      summary: Historic data of travel times.
+      summary: Historical data of travel times.
       parameters:
         - name: start_point
           in: query
@@ -32,13 +32,13 @@ paths:
           description: Letter label for travel end point.
           required: true
           type: string
-        - name: start_date
+        - name: start_datetime
           in: query
           description: Datetime for start of aggregation period.
           required: true
           type: string
           format: date
-        - name: end_date
+        - name: end_datetime
           in: query
           description: Datetime for start of aggregation period.
           required: true
@@ -46,9 +46,10 @@ paths:
           format: date
       tags:
         - Travel Times
+        - Historical Travel Times
       responses:
         200:
-          description: A response of travel time data.
+          description: A response of historical travel time data.
           schema:
             $ref: '#/definitions/ResponseObject'
         default:
@@ -71,9 +72,10 @@ paths:
           type: string
       tags:
         - Travel Times
+        - Current Travel Times
       responses:
         200:
-          description: A response of travel time data.
+          description: A response of current travel time data.
           schema:
             $ref: '#/definitions/ResponseObject'
         default:
@@ -96,6 +98,9 @@ definitions:
       end_time:
         type: string
         description: End time of the data.
+      travel_path:
+        type: string
+        description: Path of travel denoted by a list of travel points separated by underscore. 
 
   Error:
     type: object
