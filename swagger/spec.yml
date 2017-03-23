@@ -45,7 +45,6 @@ paths:
           type: string
           format: date
       tags:
-        - Travel Times
         - Historical Travel Times
       responses:
         200:
@@ -71,7 +70,6 @@ paths:
           required: true
           type: string
       tags:
-        - Travel Times
         - Current Travel Times
       responses:
         200:

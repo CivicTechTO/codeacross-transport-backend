@@ -10,7 +10,9 @@ and not yet connected.
 
 ```
 # TODO,
-- found an example: https://github.com/narenaryan/Salary-API
-  with tutorials: https://impythonist.wordpress.com/2015/07/12/build-an-api-under-30-lines-of-code-with-python-and-flask/
+- api server now can run
+- fix issue: server always return 404
+- build data model for response objects
+- link sqlite3 database with server
 
 ```
