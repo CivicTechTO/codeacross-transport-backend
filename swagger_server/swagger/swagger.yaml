@@ -1,0 +1,123 @@
+---
+swagger: "2.0"
+info:
+  description: "The City of Toronto collects travel time data from Bluetooth and WiFi\
+    \ sensors on streets and highways across the City. Travel times are derived from\
+    \ individual point (i.e. single location) observations, generated when a vehicle\
+    \ or mobile device passes by a Bluetooth/WiFi sensor. Historical data (refreshed\
+    \ monthly) and a real-time feed are both available to the public.\n\nData is averaged\
+    \ into 5-minute snapshots based on a sample of detected vehicles. Availability\
+    \ of historical and real-time data are contingent on the installation date and\
+    \ on-going functionality of sensors on individual segments.\n"
+  version: "0.0.1"
+  title: "Toronto Traffic Travel Times Sensor Data API"
+host: "codeacross-transport-backend.herokuapp.com"
+basePath: "/v0"
+schemes:
+- "http"
+- "https"
+produces:
+- "application/json"
+paths:
+  /historical:
+    get:
+      tags:
+      - "Historical Travel Times"
+      summary: "Historical data of travel times."
+      operationId: "historical_get"
+      parameters:
+      - name: "start_point"
+        in: "query"
+        description: "Letter label for travel start point."
+        required: true
+        type: "string"
+      - name: "end_point"
+        in: "query"
+        description: "Letter label for travel end point."
+        required: true
+        type: "string"
+      - name: "start_datetime"
+        in: "query"
+        description: "Datetime for start of aggregation period."
+        required: true
+        type: "string"
+        format: "date"
+      - name: "end_datetime"
+        in: "query"
+        description: "Datetime for start of aggregation period."
+        required: true
+        type: "string"
+        format: "date"
+      responses:
+        200:
+          description: "A response of historical travel time data."
+          schema:
+            type: "array"
+            title: "list of historical travel times"
+            items:
+              $ref: "#/definitions/ResponseObject"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "swagger_server.controllers.historical travel times_controller"
+  /realtime:
+    get:
+      tags:
+      - "Current Travel Times"
+      summary: "Realtime data of travel times."
+      operationId: "realtime_get"
+      parameters:
+      - name: "start_point"
+        in: "query"
+        description: "Letter label for travel start point."
+        required: true
+        type: "string"
+      - name: "end_point"
+        in: "query"
+        description: "Letter label for travel end point."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "A response of current travel time data."
+          schema:
+            type: "array"
+            title: "list of realtime travel times"
+            items:
+              $ref: "#/definitions/ResponseObject"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "swagger_server.controllers.current travel times_controller"
+definitions:
+  ResponseObject:
+    type: "object"
+    properties:
+      speed:
+        type: "number"
+        description: "The average speed in kmph."
+      travel_time:
+        type: "number"
+        description: "Time it took to travel length in seconds."
+      start_time:
+        type: "string"
+        description: "Start time of the data."
+      end_time:
+        type: "string"
+        description: "End time of the data."
+      travel_path:
+        type: "string"
+        description: "Path of travel denoted by a list of travel points separated\
+          \ by underscore."
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
