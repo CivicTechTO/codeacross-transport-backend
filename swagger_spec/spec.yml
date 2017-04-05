@@ -48,7 +48,7 @@ paths:
           type: string
           format: date
       tags:
-        - Historical Travel Times
+        - HistoricalTT
       responses:
         200:
           description: A response of historical travel time data.
@@ -76,7 +76,7 @@ paths:
           required: true
           type: string
       tags:
-        - Current Travel Times
+        - CurrentTT
       responses:
         200:
           description: A response of current travel time data.

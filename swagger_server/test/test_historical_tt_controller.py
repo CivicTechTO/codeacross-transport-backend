@@ -9,18 +9,20 @@ from six import BytesIO
 from flask import json
 
 
-class TestCurrentTravelTimesController(BaseTestCase):
-    """ CurrentTravelTimesController integration test stubs """
+class TestHistoricalTTController(BaseTestCase):
+    """ HistoricalTTController integration test stubs """
 
-    def test_realtime_get(self):
+    def test_historical_get(self):
         """
-        Test case for realtime_get
+        Test case for historical_get
 
-        Realtime data of travel times.
+        Historical data of travel times.
         """
         query_string = [('start_point', 'start_point_example'),
-                        ('end_point', 'end_point_example')]
-        response = self.client.open('/v0/realtime',
+                        ('end_point', 'end_point_example'),
+                        ('start_datetime', '2013-10-20'),
+                        ('end_datetime', '2013-10-20')]
+        response = self.client.open('/v0/historical',
                                     method='GET',
                                     query_string=query_string)
         self.assert200(response, "Response body is : " + response.data.decode('utf-8'))

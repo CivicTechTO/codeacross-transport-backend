@@ -22,6 +22,12 @@ def historical_get(start_point, end_point, start_datetime, end_datetime):
 
     :rtype: List[ResponseObject]
     """
-    start_datetime = deserialize_date(start_datetime)
-    end_datetime = deserialize_date(end_datetime)
-    return 'do some magic!'
+    start_datetimeT = deserialize_date(start_datetime)
+    end_datetimeT = deserialize_date(end_datetime)
+    #test object returns
+    t = "2014-01-02T14:35:00-05"
+    a = ResponseObject(0,0,t,t,"_".join([start_point,end_point]))
+    b = ResponseObject(1,1,t,t,"_".join([start_point,end_point]))
+    c = ResponseObject(2,2,t,t,"_".join([start_point,end_point]))
+    lst = [a,b,c]
+    return lst#'do some magic!'

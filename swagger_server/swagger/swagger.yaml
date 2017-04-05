@@ -22,7 +22,7 @@ paths:
   /historical:
     get:
       tags:
-      - "Historical Travel Times"
+      - "HistoricalTT"
       summary: "Historical data of travel times."
       operationId: "historical_get"
       parameters:
@@ -60,11 +60,11 @@ paths:
           description: "Unexpected error"
           schema:
             $ref: "#/definitions/Error"
-      x-swagger-router-controller: "swagger_server.controllers.historical travel times_controller"
+      x-swagger-router-controller: "swagger_server.controllers.historical_tt_controller"
   /realtime:
     get:
       tags:
-      - "Current Travel Times"
+      - "CurrentTT"
       summary: "Realtime data of travel times."
       operationId: "realtime_get"
       parameters:
@@ -90,7 +90,7 @@ paths:
           description: "Unexpected error"
           schema:
             $ref: "#/definitions/Error"
-      x-swagger-router-controller: "swagger_server.controllers.current travel times_controller"
+      x-swagger-router-controller: "swagger_server.controllers.current_tt_controller"
 definitions:
   ResponseObject:
     type: "object"

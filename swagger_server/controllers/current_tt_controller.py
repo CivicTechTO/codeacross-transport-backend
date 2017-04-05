@@ -5,7 +5,7 @@ from datetime import date, datetime
 from typing import List, Dict
 from six import iteritems
 from ..util import deserialize_date, deserialize_datetime
-
+import json
 
 def realtime_get(start_point, end_point):
     """
@@ -18,4 +18,10 @@ def realtime_get(start_point, end_point):
 
     :rtype: List[ResponseObject]
     """
-    return 'do some magic!'
+    #test object returns
+    t = "2014-01-02T14:35:00-05"
+    a = ResponseObject(0,0,t,t,"_".join([start_point,end_point]))
+    b = ResponseObject(1,1,t,t,"_".join([start_point,end_point]))
+    c = ResponseObject(2,2,t,t,"_".join([start_point,end_point]))
+    lst = [a,b,c]
+    return lst#'do some magic!'
